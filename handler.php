@@ -1,5 +1,8 @@
 <?php
-    $stpHeading = "<h1>Привет, ".$_POST["username"]."</h1>";
+if (isset($_POST["username"])){
+    echo "Привет,незнакомец!";
+}else {
+    $stpHeading = "<h1>Привет, " . $_POST["username"] . "</h1>";
     switch ($_POST["favoritecolor"]) {
         case "r":
             $strBackgroundColor = "rgb(255,0,0)";
@@ -13,6 +16,7 @@
             $strBackgroundColor = "rgb(255,255,255)";
             break;
     }
+}
     ?>
 <html>
 <head>
