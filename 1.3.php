@@ -9,8 +9,8 @@
 <?php
 $b = 4;
 $n = 10;
-$h = $b.$n;
-echo '<br/>'.$h;
+$h = $b . $n;
+echo '<br/>' . $h;
 ?>
 </body>
 </html>

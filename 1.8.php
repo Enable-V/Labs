@@ -10,8 +10,8 @@
 include '1.8_settings.php';
 /* @var $a int */
 /* @var $b int */
-$c = $a+ $b;
-echo 'Сумма переменных -'.$c;
+$c = $a + $b;
+echo 'Сумма переменных -' . $c;
 ?>
 </body>
 </html>

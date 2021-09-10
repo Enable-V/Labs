@@ -1,14 +1,13 @@
 <?php
-switch ($_GET['Tovar'][0])
-{
+switch ($_GET['Tovar'][0]) {
     case "Б":
-        $sum = $_GET['K']*20;
+        $sum = $_GET['K'] * 20;
     case "К":
-        $sum = $_GET['K']*15;
+        $sum = $_GET['K'] * 15;
     case "М":
-        $sum = $_GET['K']*10;
+        $sum = $_GET['K'] * 10;
 }
-if ($_GET['DK']=="on")
+if ($_GET['DK'] == "on")
     ($sum = $sum - $sum * 0.05);
 echo "Вы получаете скидку в размере 5%"
 ?>
@@ -16,6 +15,6 @@ echo "Вы получаете скидку в размере 5%"
 <head>
 </head>
 <body>
-<p>Сумма покупки: <?php echo $sum;?> у.е.</p>
+<p>Сумма покупки: <?php echo $sum; ?> у.е.</p>
 </body>
 </html>

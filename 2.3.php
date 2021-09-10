@@ -9,17 +9,17 @@
 <?php
 $auto = [];
 $auto['bmw'] = [
-        'color' => 'белый',
-        'Year' => 2005,
-        'probeg'=> 2000
+    'color' => 'белый',
+    'Year' => 2005,
+    'probeg' => 2000
 ];
 $auto['audi'] = [
-        'color' => 'синий',
-        'Year' => 2003,
-        'probeg'=> 2300
+    'color' => 'синий',
+    'Year' => 2003,
+    'probeg' => 2300
 ];
-echo '<br/>Год BMW - '.$auto['bmw']['Year'];
-echo '<br/>Год Audi - '.$auto['audi']['Year'];
+echo '<br/>Год BMW - ' . $auto['bmw']['Year'];
+echo '<br/>Год Audi - ' . $auto['audi']['Year'];
 ?>
 </body>
 </html>

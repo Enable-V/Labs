@@ -1,7 +1,7 @@
 <?php
-if (isset($_POST["username"])){
+if (isset($_POST["username"])) {
     echo "Привет,незнакомец!";
-}else {
+} else {
     $stpHeading = "<h1>Привет, " . $_POST["username"] . "</h1>";
     switch ($_POST["favoritecolor"]) {
         case "r":
@@ -17,12 +17,12 @@ if (isset($_POST["username"])){
             break;
     }
 }
-    ?>
+?>
 <html>
 <head>
     <title>Форма</title>
 </head>
-<body style="background: <?php echo $strBackgroundColor;?>;">
-    <?php echo $stpHeading ?>
+<body style="background: <?php echo $strBackgroundColor; ?>;">
+<?php echo $stpHeading ?>
 </body>
 </html>

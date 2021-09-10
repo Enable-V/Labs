@@ -15,10 +15,10 @@ $name1 = [
     4 => 'Костя',
     5 => 'Даня',
 ];
-echo $name1[2]. '<br/>';
-echo $name1[1]. '<br/>';
-echo $name1[0]. '<br/>';
-echo $name1[5]. '<br/>';
+echo $name1[2] . '<br/>';
+echo $name1[1] . '<br/>';
+echo $name1[0] . '<br/>';
+echo $name1[5] . '<br/>';
 ?>
 </body>
 </html>
