@@ -14,7 +14,7 @@
 ?>
 <h3>Форма ввода данных</h3>
 <form method="post">
-    <select name="course" size="4">
+    <select name="course" size="4" multiple="multiple">
         <option value="ASP.NET">ASP.NET</option>
         <option value="PHP">PHP</option>
         <option value="Ruby">Ruby</option>
