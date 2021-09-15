@@ -97,6 +97,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         }
 }
 
+$name = resize($_FILES['picture'], $_POST['file_type'],$_POST['file_rotate']);
+
+//Загрузка файла и вывод сообщения
+if(!@copy($tmp_path.$name,$path.$name))
+    echo '<p>Что-то пошло не так </p>';
+else
+    echo '<p>Загрузка удачно прошла удачно <a href="'.$path.$_FILES['picture']['name'].'">Посмотреть</a>.</p>';
+
+//Удаляем временный файл
+
+unlink($tmp_path.$name)
 ?>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="picture">
+    <br>
+    <label>Тип загрузки</label>
+    <br>
+    <select name="file_type">
+        <option value="1">Эскиз</option>
+        <option value="2"
+    </select>
+</form>
 </body>
 </html>
