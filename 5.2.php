@@ -16,8 +16,7 @@ $types = array('image/gif', 'image/png', 'image/jpeg');
 $size = 1024000;
 
 //Обработка запроса
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //Проверям тип файла
     if (!in_array($_FILES['picture']['types'], $types)) ;
     die('<p>Запрещенный тип файла. <a href="?">Попробовать другой файл?</a></p>');
@@ -35,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         global $tmp_path;
     }
+
     //Ограничение по ширине в пикселях
     $max_thumb_size = 200;
     $max_size = 600;
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         return false;
     //Поворачиваем изображение
     if ($rotate != null)
-        $src = imagerotate($source, $rotate ,0);
+        $src = imagerotate($source, $rotate, 0);
     else
         $src = $source;
 
@@ -68,46 +68,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $w = $max_size;
 
     //Если ширина больше заданной
-    if ($w_src > $w)
-    {
+    if ($w_src > $w) {
         //Вычисление пропорций
-        $ratio = $w_src/$w;
-        $w_dest = round($w_src/$ratio);
-        $h_dest = round($h_src/$ratio);
+        $ratio = $w_src / $w;
+        $w_dest = round($w_src / $ratio);
+        $h_dest = round($h_src / $ratio);
 
         //Создаем пустую картинку
-        $dest = imagecreatetruecolor($w_dest,$h_dest);
+        $dest = imagecreatetruecolor($w_dest, $h_dest);
         //Копируем старое изображение в новое с изменением параметров
-        imagecopyresampled($dest,0,0,0,0,$w_dest,$h_dest,$w_src,$h_src);
+        imagecopyresampled($dest, 0, 0, 0, 0, $w_dest, $h_dest, $w_src, $h_src);
 
         //Вывод картинки и очистка памяти
-        imagejpeg($dest,$tmp_path.$file['name'],$quality);
+        imagejpeg($dest, $tmp_path . $file['name'], $quality);
         imagedestroy($dest);
         imagedestroy($src);
 
         return $file['name'];
-        }
-        else
-        {
-            //Вывод картинки и очистка памяти
-            imagejpeg($dest,$tmp_path.$file['name'],$quality);
-            imagedestroy($src);
+    } else {
+        //Вывод картинки и очистка памяти
+        imagejpeg($dest, $tmp_path . $file['name'], $quality);
+        imagedestroy($src);
 
-            return $file['name'];
-        }
+        return $file['name'];
+    }
 }
 
-$name = resize($_FILES['picture'], $_POST['file_type'],$_POST['file_rotate']);
+$name = resize($_FILES['picture'], $_POST['file_type'], $_POST['file_rotate']);
 
 //Загрузка файла и вывод сообщения
-if(!@copy($tmp_path.$name,$path.$name))
+if (!@copy($tmp_path . $name, $path . $name))
     echo '<p>Что-то пошло не так </p>';
 else
-    echo '<p>Загрузка удачно прошла удачно <a href="'.$path.$_FILES['picture']['name'].'">Посмотреть</a>.</p>';
+    echo '<p>Загрузка удачно прошла удачно <a href="' . $path . $_FILES['picture']['name'] . '">Посмотреть</a>.</p>';
 
 //Удаляем временный файл
 
-unlink($tmp_path.$name)
+unlink($tmp_path . $name)
 ?>
 
 <form method="post" enctype="multipart/form-data">
