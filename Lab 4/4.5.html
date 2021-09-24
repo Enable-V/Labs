@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<style>
+    .main {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .name {
+        margin-left: 57px;
+        width: 300px;
+    }
+
+    .fam {
+        margin-left: 31px;
+        width: 300px;
+    }
+
+    .email {
+        margin-left: 47px;
+        width: 300px;
+    }
+
+    .voz {
+        margin-left: 31px;
+        width: 300px;
+    }
+
+    .sel {
+        margin-left: 66px;
+        width: 307px;
+    }
+
+    .area {
+        height: 90px;
+        margin-left: 100px;
+        width: 303px;
+    }
+
+    .bl1 {
+        position: absolute;
+        width: 100px;
+    }
+
+    .checkb {
+        margin-bottom: 10px;
+    }
+
+    .check {
+        width: calc(25% - 50px);
+        display: inline-block;
+    }
+
+    .animal {
+        margin-right: 5%;
+        margin-bottom: 3%;
+        margin-top: 3%;
+    }
+</style>
+<head>
+    <meta http-equiv="x-ua-compatible" content="IE=Edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Форма регистрации</title>
+</head>
+<body>
+<h1>Форма заявки на работу в зоопарке</h1>
+<i>Пожалуйста заполните форму. Обязательные поля обозначены*</i>
+<fieldset class="main">
+    <legend>Контактная информация</legend>
+    <form action="registration.php" method="get">
+        <p>Имя*: <input class="name" type="text" name="name"/></p>
+        <p>Фамилия: <input class="fam" type="text" name="fam"/></p>
+        <p> Email*: <input class="email" type="text" name="email"/></p>
+    </form>
+</fieldset>
+<fieldset>
+    <legend>Персональная информация</legend>
+    <form action="registration.php" method="get">
+        <p>Возраст*: <input class="voz" type="text" name="name"/></p>
+        <p>Пол:
+            <select class="sel" name="course" size="1">
+                <option value="Female">Женщина</option>
+                <option value="male">Мужчина</option>
+                <option value="Another">Другое</option>
+            </select>
+        <div class="bl1">
+            <p>Перечислите личные качества:</div>
+        <textarea class="area" type="text"
+                  name="email"> </textarea></p></div>
+    </form>
+</fieldset>
+<div class="checkb">
+    <fieldset>
+        <legend>Выберите ваших любимых животных</legend>
+        <div class="zhiv">
+            <div class="check"><input type="checkbox" class="animal"><span>Зебра</span></div>
+            <div class="check"><input type="checkbox" class="animal"><span>Слон</span></div>
+            <div class="check"><input type="checkbox" class="animal"><span>Кошка</span></div>
+            <div class="check"><input type="checkbox" class="animal"><span>Антилопа</span></div>
+            <div class="check"><input type="checkbox" class="animal"><span>Собака</span></div>
+            <div class="check"><input type="checkbox" class="animal"><span>Краб</span></div>
+            <div class="check"><input type="checkbox" class="animal"><span>Лев</span></div>
+            <div class="check"><input type="checkbox" class="animal"><span>Кролик</span></div>
+        </div>
+    </fieldset>
+    <input type="button" value="Отправить информацию" class="button">
+</div>
+</body>
+</html>
