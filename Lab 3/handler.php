@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST["username"])) {
+if (empty($_POST["username"])) {
     echo "Привет,незнакомец!";
 } else {
     $stpHeading = "<h1>Привет, " . $_POST["username"] . "</h1>";
