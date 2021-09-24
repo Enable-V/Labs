@@ -6,15 +6,13 @@
 </head>
 <body>
 <?php
-    if(isset($_POST["technologies"]));
-    $technologies = $_POST["technologies"];
-    foreach ($technologies as $item) {
-        echo "$item<br/>";
-}
+if (isset($_POST["course"])) ;
+$course = $_POST["course"];
+echo $course;
 ?>
 <h3>Форма ввода данных</h3>
 <form method="post">
-    <select name="course" size="4">
+    <select name="course" size="1">
         <option value="ASP.NET">ASP.NET</option>
         <option value="PHP">PHP</option>
         <option value="Ruby">Ruby</option>
