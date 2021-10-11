@@ -121,6 +121,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <option value="1">Эскиз</option>
         <option value="2">Большое изображение</option>
     </select>
+    <br>
+    <label>Поворот</label>
+    <br>
+    <input type="text" name="file_rotate">
+    <br>
     <input type="submit" value="Загрузить">
 </form>
 </body>
