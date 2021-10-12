@@ -1,17 +1,20 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN""//www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-    <title>Загрузка изображения с измнением размеров</title>
+    <title>Загрузка изображения с изменением размеров</title>
     <meta http-equiv="Content-Type" content="text/html; charset = utf-8">
 </head>
 <body>
-<h1>Загрузка изображения с измнением размеров</h1>
+<h1>Загрузка изображения с изменением размеров</h1>
 <?php
-//Пути загрущки файлов
-//if(!is_dir("i/" )&!is_dir("tmp/" ) ) {
-// mkdir("i/");
-// mkdir("tmp/");
+//Создание директорий
+//if (!is_dir("i/")) {
+//    mkdir("i/");
 //}
+//if (!is_dir("tmp/")) {
+//    mkdir("tmp/");
+//}
+//Пути загрущки файлов
 $path = 'i/';
 $tmp_path = 'tmp/';
 //Массив допустимых значений
@@ -39,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         global $tmp_path;
 
         //Ограничение по ширине в пикселях
-        $max_thumb_size = 200;
-        $max_size = 600;
+        $max_thumb_size = $_POST['max_thumb_size'];
+        $max_size = $_POST['max_size'];
         //Качество изображения по умолчанию
         if ($quality == null)
             $quality = 75;
@@ -111,22 +114,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     unlink($tmp_path . $name);
 }
 ?>
-
 <form method="post" enctype="multipart/form-data">
     <input type="file" name="picture">
-    <br>
-    <label>Тип загрузки</label>
-    <br>
-    <select name="file_type">
+    <br><label>Тип загрузки</label>
+    <br><select name="file_type">
         <option value="1">Эскиз</option>
         <option value="2">Большое изображение</option>
     </select>
-    <br>
-    <label>Поворот</label>
-    <br>
-    <input type="text" name="file_rotate">
-    <br>
-    <input type="submit" value="Загрузить">
+    <br><label>Поворот</label>
+    <br><input type="text" name="file_rotate">
+    <br><label>Ограничение эскиза по ширине</label>
+    <br><input type="text" name="max_thumb_size">
+    <br><label>Ограничение большого изображения по ширине</label>
+    <br><input type="text" name="max_size">
+    <br><input type="submit" value="Загрузить">
 </form>
 </body>
 </html>
