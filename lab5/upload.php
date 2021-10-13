@@ -77,14 +77,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //Если ширина больше заданной
         if ($w_src > $w) {
             //Вычисление пропорций
-            $ratio = $w_src / $w;
-            $w_dest = round($w_src / $ratio);
-            $h_dest = round($h_src / $ratio);
-
+            if ($w_src > $h_src) {
+                global $w_dest;
+                $ratio = $w_src / $w;
+                $w_dest = round($w_src / $ratio);
+                //Создаем пустую картинку
+                ////Копируем старое изображение в новое с изменением параметров
+                $dest = imagecreatetruecolor($w_dest, $h_src);
+                imagecopyresampled($dest, $src, 0, 0, 0, 0, $w_dest, $h_src, $w_src, $h_src);
+            } elseif ($w_src < $h_src)
+                $ratio = $h_src / $w;
+            $h_dest = round($w_src / $ratio);
+            $dest = imagecreatetruecolor($w_src, $h_dest);
             //Создаем пустую картинку
-            $dest = imagecreatetruecolor($w_dest, $h_dest);
             //Копируем старое изображение в новое с изменением параметров
-            imagecopyresampled($dest, $src, 0, 0, 0, 0, $w_dest, $h_dest, $w_src, $h_src);
+            imagecopyresampled($dest, $src, 0, 0, 0, 0, $w_src, $h_dest, $w_src, $h_src);
 
             //Вывод картинки и очистка памяти
             imagejpeg($dest, $tmp_path . $file['name'], $quality);
@@ -123,9 +130,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </select>
     <br><label>Поворот</label>
     <br><input type="text" name="file_rotate">
-    <br><label>Ограничение эскиза по ширине</label>
+    <br><label>Ограничение эскиза по большей стороне</label>
     <br><input type="text" name="max_thumb_size">
-    <br><label>Ограничение большого изображения по ширине</label>
+    <br><label>Ограничение большого изображения по большей стороне</label>
     <br><input type="text" name="max_size">
     <br><input type="submit" value="Загрузить">
 </form>
