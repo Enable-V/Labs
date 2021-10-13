@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<link rel="stylesheet" type="text/css" href="style.css">
+<head>
+    <meta http-equiv="x-ua-compatible" content="IE=Edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Форма регистрации</title>
+</head>
+<body>
+<h1>Форма заявки на работу в зоопарке</h1>
+<i>Пожалуйста заполните форму. Обязательные поля обозначены<span class="red">*</span></i>
+<fieldset class="main">
+    <legend>Контактная информация</legend>
+    <form action="registration.php" method="get">
+        <p>Имя<span class="red">*</span>: <input class="name" type="text" name="name"/></p>
+        <p>Телефон: <input class="tel" type="text" name="fam"/></p>
+        <p> Email<span class="red">*</span>: <input class="email" type="text" name="email"/></p>
+    </form>
+</fieldset>
+<fieldset>
+    <legend>Персональная информация</legend>
+    <form action="registration.php" method="get">
+        <p>Возраст<span class="red">*</span>: <input class="voz" type="text" name="name"/></p>
+        <p>Пол:
+            <select class="sel" name="course" size="1">
+                <option value="Female">Женщина</option>
+                <option value="Male">Мужчина</option>
+                <option value="Another">Другое</option>
+            </select>
+        <div class="bl1">
+            <p>Перечислите личные качества:</div>
+        <textarea class="area" type="text"
+                  name="email"> </textarea></p></div>
+    </form>
+</fieldset>
+<div class="checkb">
+    <fieldset>
+        <legend>Выберите ваших любимых животных</legend>
+            <div class="check"><input type="checkbox" class="animal"><span>Зебра</span></div>
+            <div class="check"><input type="checkbox" class="animal"><span>Слон</span></div>
+            <div class="check"><input type="checkbox" class="animal"><span>Кошка</span></div>
+            <div class="check"><input type="checkbox" class="animal"><span>Антилопа</span></div>
+            <div class="check"><input type="checkbox" class="animal"><span>Собака</span></div>
+            <div class="check"><input type="checkbox" class="animal"><span>Краб</span></div>
+            <div class="check"><input type="checkbox" class="animal"><span>Лев</span></div>
+            <div class="check"><input type="checkbox" class="animal"><span>Кролик</span></div>
+    </fieldset>
+    <input type="button" value="Отправить информацию" class="button">
+</div>
+</body>
+</html>
