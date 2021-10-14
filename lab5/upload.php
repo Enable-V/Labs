@@ -78,7 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($w_src > $w) {
             //Вычисление пропорций
             if ($w_src > $h_src) {
-                global $w_dest;
                 $ratio = $w_src / $w;
                 $w_dest = round($w_src / $ratio);
                 //Создаем пустую картинку
