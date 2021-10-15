@@ -69,13 +69,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $h_src = imagesy($src);
         $watermark_width = imagesx($watermark);
         $watermark_height = imagesy($watermark);
-        $size = getimagesize($file['tmp_name']);
 
 
         //В зависимости от типа (эскиз или большое изоборажение) устанавливает ограничение по ширине.
         if ($type == 1)
             $w = $max_thumb_size;
-        elseif ($type == 2)
+        if ($type == 2)
             $w = $max_size;
 
         $dest = null;
@@ -89,32 +88,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 ////Копируем старое изображение в новое с изменением параметров
                 $dest = imagecreatetruecolor($w_dest, $h_src);
                 imagecopyresampled($dest, $src, 0, 0, 0, 0, $w_dest, $h_src, $w_src, $h_src);
-                $dest_x = $size[0] - $watermark_height - 5;
-                $dest_y = $size[1] - $watermark_width - 5;
-                imagecopy($dest,$watermark, $dest_x, $dest_y,0,0,$watermark_width,$watermark_height);
+
+                imagecopy($dest, $watermark, 1, 1, 0, 0, $watermark_width, $watermark_height);
             } elseif ($w_src < $h_src)
                 $ratio = $h_src / $w;
-            $h_dest = round($w_src / $ratio);
+            $h_dest = round($h_src / $ratio);
             $dest = imagecreatetruecolor($w_src, $h_dest);
             //Создаем пустую картинку
             //Копируем старое изображение в новое с изменением параметров
             imagecopyresampled($dest, $src, 0, 0, 0, 0, $w_src, $h_dest, $w_src, $h_src);
 
-            $dest_x = $size[0] - $watermark_height - 5;
-            $dest_y = $size[1] - $watermark_width - 5;
-
-            imagecopy($dest,$watermark, $dest_x, $dest_y,0,0,$watermark_width,$watermark_height);
+            imagecopy($dest, $watermark, 1, 1, 0, 0, $watermark_width, $watermark_height);
 
             //Вывод картинки и очистка памяти
             imagejpeg($dest, $tmp_path . $file['name'], $quality);
             imagedestroy($dest);
             imagedestroy($src);
+            imagedestroy($watermark);
+
 
             return $file['name'];
         } else {
             //Вывод картинки и очистка памяти
             imagejpeg($dest, $tmp_path . $file['name'], $quality);
             imagedestroy($src);
+            imagedestroy($watermark);
 
             return $file['name'];
         }
@@ -136,10 +134,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <form method="post" enctype="multipart/form-data">
     <input type="file" name="picture">
     <br><label>Тип загрузки</label>
-    <br><select name="file_type">
-        <option value="1">Эскиз</option>
-        <option value="2">Большое изображение</option>
-    </select>
+    <br>
+    <p>Эскиз <input type="checkbox" name="file_type" value="1"/></p>
+    <p>Большое изображение <input type="checkbox" name="file_type" value="2"/></p>
     <br><label>Поворот</label>
     <br><input type="text" name="file_rotate">
     <br><label>Ограничение эскиза по большей стороне</label>
