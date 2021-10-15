@@ -8,13 +8,13 @@
 <h1>Загрузка изображения с изменением размеров</h1>
 <?php
 //Создание директорий
-//if (!is_dir("i/")) {
-//    mkdir("i/");
-//}
-//if (!is_dir("tmp/")) {
-//    mkdir("tmp/");
-//}
-//Пути загрущки файлов
+if (!is_dir("i/")) {
+    mkdir("i/");
+}
+if (!is_dir("tmp/")) {
+    mkdir("tmp/");
+}
+//Пути загрузки файлов
 $path = 'i/';
 $tmp_path = 'tmp/';
 //Массив допустимых значений
@@ -48,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($quality == null)
             $quality = 75;
 
+        $watermark = imagecreatefrompng('watermark.png');
         //Создаем исходное изображение на основе исходного файла
         if ($file['type'] == 'image/jpeg')
             $source = imagecreatefromjpeg($file['tmp_name']);
@@ -66,6 +67,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //Определяем ширину и высоту изображения
         $w_src = imagesx($src);
         $h_src = imagesy($src);
+        $watermark_width = imagesx($watermark);
+        $watermark_height = imagesy($watermark);
+        $size = getimagesize($file['tmp_name']);
+
 
         //В зависимости от типа (эскиз или большое изоборажение) устанавливает ограничение по ширине.
         if ($type == 1)
@@ -84,6 +89,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 ////Копируем старое изображение в новое с изменением параметров
                 $dest = imagecreatetruecolor($w_dest, $h_src);
                 imagecopyresampled($dest, $src, 0, 0, 0, 0, $w_dest, $h_src, $w_src, $h_src);
+                $dest_x = $size[0] - $watermark_height - 5;
+                $dest_y = $size[1] - $watermark_width - 5;
+                imagecopy($dest,$watermark, $dest_x, $dest_y,0,0,$watermark_width,$watermark_height);
             } elseif ($w_src < $h_src)
                 $ratio = $h_src / $w;
             $h_dest = round($w_src / $ratio);
@@ -91,6 +99,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Создаем пустую картинку
             //Копируем старое изображение в новое с изменением параметров
             imagecopyresampled($dest, $src, 0, 0, 0, 0, $w_src, $h_dest, $w_src, $h_src);
+
+            $dest_x = $size[0] - $watermark_height - 5;
+            $dest_y = $size[1] - $watermark_width - 5;
+
+            imagecopy($dest,$watermark, $dest_x, $dest_y,0,0,$watermark_width,$watermark_height);
 
             //Вывод картинки и очистка памяти
             imagejpeg($dest, $tmp_path . $file['name'], $quality);
