@@ -7,7 +7,7 @@
 <body>
 <?php
 // Соединяемся с MySQL
-$link = mysqli_connect("localhost", "sdenisov", "dq7M7Z", "sdenisov_group");
+$link = mysqli_connect("localhost", "ahruschev", "GgW4b4", "ahruschev_group");
 
 // Выполняем запрос к базе данных skgmi
 $resultat = mysqli_query($link, "SELECT * FROM uspevaemost");
@@ -46,19 +46,19 @@ _HTML;
 
 <?php
 /*
-$db = mysqli_connect("localhost", "sdenisov", "dq7M7Z", "sdenisov_group");
+$db = mysqli_connect("localhost", "ahruschev", "GgW4b4", "ahruschev_group");
 $result = mysqli_query($db,"UPDATE `uspevaemost` SET `fio` = 'Бегин Рита', `propuski` = '3', `sr_reyting` = '440' WHERE `id` = '2'");
 */
 ?>
 <?php
 /*
-$db = mysqli_connect("localhost", "sdenisov", "dq7M7Z", "sdenisov_group");
+$db = mysqli_connect("localhost", "ahruschev", "GgW4b4", "ahruschev_group");
 $result = mysqli_query($db,"DELETE FROM `uspevaemost` WHERE `id` = '8'");
 */
 ?>
 <?php
 /*
-$db = mysqli_connect("localhost", "sdenisov", "dq7M7Z", "sdenisov_group");
+$db = mysqli_connect("localhost", "ahruschev", "GgW4b4", "ahruschev_group");
 $result = mysqli_query($db, "INSERT INTO uspevaemost (fio, propuski, sr_reyting) VALUES ('Обычный Человек', '4', '400') ");
 */
 ?>

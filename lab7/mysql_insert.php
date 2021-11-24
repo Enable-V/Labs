@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $lastname = !empty($_POST['lastname']) ? $_POST['lastname'] : null;
     $dol = !empty($_POST['dol']) ? $_POST['dol'] : null;
     if ($name && $lastname && $dol) {
-        $db = mysqli_connect("localhost", "sdenisov", "dq7M7Z", "sdenisov_firstbd");
+        $db = mysqli_connect("localhost", "ahruschev", "GgW4b4", "ahruschev_firstbd");
         $result = mysqli_query($db,"INSERT INTO firma (name, lastname, dol) VALUES ('{$name}', '{$lastname}', '{$dol}') ");
         if ($result == true)
             echo "Информация в базу добавлена успешно";
