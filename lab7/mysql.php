@@ -7,7 +7,7 @@
 <body>
 <?php
 /* Пример 1
-$db = mysqli_connect("localhost", "ahuschev", "GgW4b4", "");
+$db = mysqli_connect("localhost", "ahuschev", "GgW4b4", "ahruschev_firstbd");
 $result = mysqli_query($db, "SELECT * FROM firma");
 $myrow = mysqli_fetch_array($result);
 echo $myrow['name'] .'<br />' ;
