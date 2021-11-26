@@ -76,7 +76,7 @@ while ($mas = mysqli_fetch_row($result)):
     }
 endwhile;
 
-echo "<h2 ALIGN=CENTER> <b> Вывод из таблицы 2isip3 базы данных sdenisov_College </b> </H2>";
+echo "<h2 ALIGN=CENTER> <b> Вывод из таблицы 2isip3 базы данных ahruschev_College </b> </H2>";
 echo "<table cols=4 border=1 WIDTH=100% CELLPADDING=4 ALIGN=CENTER>\n";
 echo "<tr> <td> id </td> <td> ФИО </td> <td> Возраст </td> <td> Хоббит </td> </tr>";
 $key1 = 0;
