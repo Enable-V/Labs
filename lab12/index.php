@@ -8,7 +8,7 @@ session_start();
 
     body{
         color: black ;
-        background: white;
+        background: greenyellow;
     }
     h1{
         text-decoration:sienna ;

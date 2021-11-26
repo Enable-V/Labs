@@ -2,8 +2,8 @@
 <html lang="ru">
 <STYLE>
     body{
-        background-color:black;
-        color: white;
+        background-color:white;
+        color: black;
         font-family: Candara;
         font-size: 18px;
     }
@@ -14,7 +14,7 @@
         width: 6em
     }
     .btn{
-        font-size: 100px;
+        font-size: 10px;
         padding: 5px 25px 5px 25px;
         border-radius: 9px;
         background:white;
