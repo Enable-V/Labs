@@ -1,7 +1,7 @@
 <?php
 return array(
     'host' => 'localhost',
-    'user' => 'ahruschev',
-    'pass' => 'GgW4b4',
+    'user' => 'root',
+    'pass' => '',
     'base' => 'ahruschev_lab13'
 );
